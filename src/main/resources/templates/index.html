@@ -1,10 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org.thymeleaf-extras-springsecurity4">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Title</title>
+<head th:replace="/fragments/navbase::navhead">
 </head>
 <body>
-<h1>HomePage</h1>
+<nav th:replace="/fragments/navbase::thenav(${menuoption})"></nav>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="header">
+                        <h4 class="title">Table on Plain Background</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-hover">
+                            <thead>
+                            <th>Address</th>
+                            <th>Address 2</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Price</th>
+                            </thead>
+                            <tbody>
+                            <tr th:each="eachRoom:${rooms}">
+                                <td th:text="${eachRoom.address}"></td>
+                                <td th:text="${eachRoom.address2}"></td>
+                                <td th:text="${eachRoom.city}"></td>
+                                <td th:text="${eachRoom.state}"></td>
+                                <td th:text="${eachRoom.price}"></td>
+                                <td th:text="${eachRoom.isRented}?'Available':'Rented'" th:classappend="${eachRoom.isRented}?'lost':'found'"></td>
+                                <!--<td>-->
+                                    <!--<form th:action="/updateroom" method="post">-->
+                                        <!--<input type="hidden" name="id" th:value="${eachRoom.id}">-->
+                                        <!--<p><button th:text="'Edit room'" type="submit"></button> </p>-->
+                                    <!--</form>-->
+                                    <!--<form th:action="/toggle" method="post">-->
+                                        <!--<input type="hidden" name="id" th:value="${eachRoom.id}">-->
+                                        <!--<p><button th:text="${eachRoom.isRented}?'Available':'Rented'" type="submit"></button></p>-->
+                                    <!--</form>-->
+                                <!--</td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<span th:replace="/fragments/navbase::scripts"></span>
 </body>
 </html>

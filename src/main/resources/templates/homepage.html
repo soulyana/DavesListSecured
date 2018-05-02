@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="/fragments/navbase::navhead">
+</head>
+<body>
+<nav th:replace="/fragments/navbase::thenav(${menuoption})"></nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col"><h1 class="display-1" style="text-align:center;">Dave's List</h1></div>
+    </div>
+    <div class="row">
+        <div class="col"><h1 class="display-3" style="text-align:center;">Your online rooms for rent collection </h1></div>
+    </div>
+</div>
+<span th:replace="/fragments/navbase::scripts"></span>
+</body>
+</html>

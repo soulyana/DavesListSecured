@@ -1,7 +1,7 @@
 package me.soulyana.daveslist.Models;
 
 import javax.persistence.*;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Room {
@@ -9,6 +9,7 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String address;
+    private String address2;
     private String city;
     private String state;
     private double price;
@@ -17,13 +18,12 @@ public class Room {
     private String wifi;
     private String cable;
     private String privateBth;
+
+    @NotNull
     private boolean isRented;
 
-    @ManyToOne
-    private User user;
-
     public Room() {
-        isRented = false;
+        this.isRented = false;
 
     }
 
@@ -41,6 +41,14 @@ public class Room {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
     }
 
     public String getCity() {
@@ -113,13 +121,5 @@ public class Room {
 
     public void setRented(boolean rented) {
         isRented = rented;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
